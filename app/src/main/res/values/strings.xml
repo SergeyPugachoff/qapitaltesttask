@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Qapital</string>
+    <string name="activity_amount">$%s</string>
+    <string name="date_today_label">Today</string>
+    <string name="date_yesterday_label">Yesterday</string>
+    <string name="activities_date_format">dd MMM yyyy</string>
+</resources>
