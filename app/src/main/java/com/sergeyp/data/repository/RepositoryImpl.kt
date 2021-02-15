@@ -29,7 +29,7 @@ class RepositoryImpl(
     private val cachedUsers = mutableSetOf<User>()
 
     override fun getActivities(from: Date, to: Date): Single<List<Activity>> {
-        return if (oldest == null || from.after(oldest)) {
+        return if (oldest == null || to.after(oldest)) {
             api.getActivities(from, to)
                 .flatMap { response ->
                     oldest = response.oldest

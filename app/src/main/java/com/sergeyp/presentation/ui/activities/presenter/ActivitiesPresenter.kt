@@ -20,7 +20,7 @@ class ActivitiesPresenter(
     private var from = Date()
 
     override fun onFirstViewAttach() {
-        loadActivities()
+        refresh()
     }
 
     override fun onDestroy() {
@@ -37,13 +37,23 @@ class ActivitiesPresenter(
                     { items ->
                         activities.addAll(items)
                         viewState.showLoading(false)
+                        viewState.showRefreshing(false)
                         viewState.submitList(activities)
                     }, { error ->
                         viewState.showLoading(false)
+                        viewState.showRefreshing(false)
                         viewState.showError(error)
                     }
                 )
         )
+    }
+
+    fun refresh() {
+        viewState.showRefreshing(true)
+        to = Date()
+        from = Date()
+        activities.clear()
+        loadActivities()
     }
 
     companion object {

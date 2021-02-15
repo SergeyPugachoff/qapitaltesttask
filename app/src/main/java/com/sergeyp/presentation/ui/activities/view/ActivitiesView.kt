@@ -8,6 +8,9 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface ActivitiesView : MvpView {
 
     @AddToEndSingle
+    fun showRefreshing(show: Boolean)
+
+    @AddToEndSingle
     fun showLoading(show: Boolean)
 
     @AddToEndSingle

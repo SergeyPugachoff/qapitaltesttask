@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.activities.view.ActivitiesActivity">
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="Activity"
+        android:text="@string/activity_title"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,13 +29,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_list"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loading" />
+        app:layout_constraintTop_toBottomOf="@+id/loading">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

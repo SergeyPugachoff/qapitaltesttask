@@ -50,6 +50,10 @@ class ActivitiesActivity : MvpAppCompatActivity(), ActivitiesView {
         Toast.makeText(this, throwable.message ?: "error", Toast.LENGTH_SHORT).show()
     }
 
+    override fun showRefreshing(show: Boolean) {
+        binding.refresh.isRefreshing = show
+    }
+
     override fun showLoading(show: Boolean) {
         binding.loading.isInvisible = show.not()
     }
@@ -59,6 +63,9 @@ class ActivitiesActivity : MvpAppCompatActivity(), ActivitiesView {
     }
 
     private fun initUi() = with(binding) {
+        refresh.setOnRefreshListener {
+            presenter.refresh()
+        }
         activityList.adapter = ActivitiesAdapter()
         activityList.layoutManager = LinearLayoutManager(this@ActivitiesActivity)
         activityList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
